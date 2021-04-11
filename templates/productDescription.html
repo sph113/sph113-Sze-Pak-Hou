@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} Product Description {% endblock %}
+{% block content %}
+<link rel="stylesheet" href={{url_for('static', filename='css/productDescription.css')}} />
+<script src={{url_for('static', filename='js/back.js')}}></script>
+<button onclick="goBack()" class="btn btn-secondary">Go Back</button>
+
+<div class="container">
+	<div class="row">
+		<h1>{{data[1]}}</h1>
+	</div>
+</div>
+<div class="container-fluid" style="width: 50rem;">
+	<div class="row">
+		<div class="col-6">
+			<img class="d-block mx-auto w-100" src={{url_for('static', filename='uploads/'+data[4]) }} id="productImage"/>
+		</div>
+		<div class="container-fluid col-6" >
+			<div class="row">
+				<h2>Detail</h2>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<p>Name</p>
+				</div>
+				<div class="col-6">
+					<p>{{data[1]}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<p>Price</p>
+				</div>
+				<div class="col-6">
+					<p>$ {{data[2]}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<p>Stock</p>
+				</div>
+				<div class="col-6">
+					<p>{{data[5]}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<h2>Description</h2>
+			</div>
+			<div class="row">
+				<p>{{data[3]}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<a href="/addToCart?productId={{request.args.get('productId')}}" class="btn btn-secondary" role="button" aria-pressed="true">
+			Add to Cart
+		</a>
+	</div>
+</div>
+
+{% endblock %}

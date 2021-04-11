@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %} Your orders {% endblock %}
+{% block content %}
+<link rel="stylesheet" href={{url_for('static', filename='css/cart.css')}} />
+<h2>Your Orders</h2>
+<ul class="list-group">
+	
+	
+	<li class="list-group-item">
+		<p>{{Today}}(Today)</p>
+		{% for orderData in ordersData %}
+		{% if orderData[0] == Today %}
+		<ul class="list-group">
+			
+			<li class="list-group-item">
+				<div id="itemImage">
+					<img src={{url_for('static', filename='uploads/'+orderData[3])}} id="image"/>
+				</div>
+				<div id="itemName">
+					<span id="itemNameTag">{{orderData[2]}}</span>
+				</div>
+			</li>
+
+		</ul>
+		{% endif %}
+		{% endfor%}
+	</li>
+	{% for date in dates %}
+	<li class="list-group-item">
+		<p>{{date[0]}}</p>
+		{% for orderData in ordersData %}
+		
+		{% if orderData[0] == date[0] %}
+		<ul class="list-group">
+			
+			<li class="list-group-item">
+				<div id="itemImage">
+					<img src={{url_for('static', filename='uploads/'+orderData[3])}} id="image"/>
+				</div>
+				<div id="itemName">
+					<span id="itemNameTag">{{orderData[2]}}</span>
+				</div>
+			</li>
+
+		</ul>
+		{% endif %}
+		{% endfor %}
+	</li>
+	{% endfor%}
+
+</ul>
+{% endblock %}

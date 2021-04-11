@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Your Cart {% endblock %}
+{% block content %}
+<link rel="stylesheet" href={{url_for('static', filename='css/cart.css')}} />
+<div id="cartItems">
+	<h2>Shopping Cart</h2>
+	<div id="tableItems">
+		<ul class="list-group">
+		{% for row in products %}
+			<li class="list-group-item">
+				<div id="itemImage">
+					<img src={{url_for('static', filename='uploads/'+row[3])}} id="image"/>
+				</div>
+				<div id="itemName">
+					<span id="itemNameTag">{{row[1]}}</span><br>
+					In stock<br>
+					<a class="btn btn-outline-primary btn-sm" href="/removeFromCart?productId={{row[0]}}">Remove</a>
+				</div>
+				<div id="itemPrice">
+					${{row[2]}}
+				</div>
+			</li>
+		{% endfor %}
+		</ul>
+		<hr id="seperator">
+		<div id="total">
+			<span id="subtotal">Subtotal</span> : ${{totalPrice}}
+		</div>
+	</div>
+</div>
+<a class="btn btn-secondary" href="/checkout">Proceed to checkout</a>
+{% endblock %}

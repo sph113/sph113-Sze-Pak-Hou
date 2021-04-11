@@ -1,0 +1,71 @@
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  	<a class="navbar-brand" href="/">
+      <img src={{ url_for('static', filename='images/logo.png') }} width="30" height="30" alt="">
+      Modle Buy
+    </a>
+  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  	</button>
+
+  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	<ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/all">All the product</a>
+        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Vendor
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% for row in vendorData %}
+          <a class="dropdown-item" href="/displayVendor?vendorId={{row[0]}}">{{row[1]}}</a>
+          {% endfor %}
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/aboutus">About Us</a>
+      </li>
+      {% if isadmin %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/add">Add item</a>
+          <a class="dropdown-item" href="/remove">Remove</a>
+        </div>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <form action="/search" name="search" class="form-inline">
+          <input class="form-control mr-sm-2" type="text" name="search"placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </li>
+    </ul>
+    {% if not loggedIn %}
+    <div id="signInButton">
+      <a class="link" href="/loginForm">Sign In</a>
+    </div>
+    {% else %}
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hello, {{firstName}}
+        </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/account/orders">Your orders</a>
+          <a class="dropdown-item" href="/account/profile">Your profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">Sign Out</a>
+      </div>
+    </div>
+    {% endif %}
+
+    <div id="kart">
+      <a class="link" href="/cart">
+        <img src={{url_for('static', filename='images/shoppingCart.png')}} width="30" height="30"/>
+        CART {{noOfItems}}
+      </a>
+    </div>
+    </div>
+</nav>

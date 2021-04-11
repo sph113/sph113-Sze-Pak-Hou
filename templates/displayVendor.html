@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Vendor: {{vendorName}} {% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+
+<div>
+	<h2>Showing all products of Vendor {{vendorName}}:</h2>
+			{% for itemData in data %}
+			<div class="card-deck">
+			{% for row in itemData %}
+			<div class="col-auto mb-3">
+			<div class="card">
+				<a class="card-img-top" href="/productDescription?productId={{row[0]}}">
+					<img class="d-block mx-auto" src={{ url_for('static', filename='uploads/' + row[3]) }} style="height: 300px; width:auto;" />
+				</a>
+        		<div class="card-body">
+        			<h4 class="card-title">{{row[1]}}</h4>
+        			<p class="card-text">${{row[2]}}</p>
+        		</div>
+        	</div>
+        	</div>
+        	{% endfor %}
+        	</div>
+        	{% endfor %}
+</div>
+
+{% endblock %}

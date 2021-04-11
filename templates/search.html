@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} All {% endblock %}
+{% block content %}
+
+	<div>
+		<h2>Search result for {{search}}</h2>
+        	<div class="card-deck">
+			{% for datas in itemData %}
+			{% for row in datas %}
+			<div class="col-auto mb-3">
+			<div class="card ">
+				<a class="card-img-top" href="/productDescription?productId={{row[0]}}">
+					<img class="d-block mx-auto" src={{ url_for('static', filename='uploads/' + row[4]) }} style="height: 300px; width: auto;" />
+				</a>
+        		<div class="card-body">
+        			<h4 class="card-title">{{row[1]}}</h4>
+        			<p class="card-text">${{row[2]}}</p>
+        		</div>
+        	</div>
+        	</div>
+        	{% endfor %}
+        	{% endfor %}
+        	</div>
+	</div>
+
+{% endblock %}

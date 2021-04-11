@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %} Edit Profile {% endblock %}
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning" role="alert">
+		{{ message }}
+	</div>
+{% endfor %}
+
+<div class="display">
+	<a class="btn btn-primary" href="{{ url_for('profileHome') }}">< Back to Profile</a>
+<div class="container">
+	<div class="card text-center">
+		<div class="card-body">
+			<h5 class="card-title">Edit profile</h5>
+	<form action="/updateProfile" method="POST">
+		<p>Email:<input type="email" name="email" value={{profileData[1]}} readonly="readonly"></p>
+		<p>First Name:<input type="text" name="firstName" value={{profileData[2]}} required></p>
+		<p>Last Name: <input type="text" name="lastName" value="{{profileData[3]}}" required></p>
+		<p>Address 1: <input type="text" name="address1" value={{profileData[4]}} required></p>
+		<p>Address 2: <input type="text" name="address2" value={{profileData[5]}} required></p>
+		<p>Zip Code: <input type="text" name="zipcode" value={{profileData[6]}} required></p>
+		<p>City: <input type="text" name="city" value={{profileData[7]}} required></p>
+		<p>State: <input type="text" name="state" value={{profileData[8]}} required></p>
+		<p>Country: <input type="text" name="country" value={{profileData[9]}} required></p>
+		<p>Phone Number: <input type="text" name="phone" value={{profileData[10]}} required></p>
+		<input type="submit"  value="Save">
+	</form>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

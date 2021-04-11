@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} remove {% endblock %}
+{% block content %}
+
+		<h2>Click to Edit</h2>
+
+		<div class="card-deck">
+			{% for row in data %}
+			<div class="col-auto mb-3">
+			<div class="card ">
+					<img src={{ url_for('static', filename='uploads/' + row[4]) }} style="height: 200px; width: 150px;" />
+        		<div class="card-body">
+        			<h4 class="card-title">{{row[1]}}</h4>
+        			<p class="card-text">${{row[2]}}</p>
+        			<a class="btn btn-primary" href="/removeItem?productId={{row[0]}}">remove</a>
+        			<a class="btn btn-primary" href="/edititemform?productId={{row[0]}}">edit</a>
+        		</div>
+        	</div>
+        	</div>
+			{% endfor %}
+		</div>
+
+{% endblock %}

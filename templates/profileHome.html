@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} Profile Home {% endblock %}
+{% block content %}
+
+<div class="container">
+	<h2>Hi, {{profileData[2]}} {{profileData[3]}}</h2>
+	<h4>This is your profile
+	<a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseprofile" role="button" aria-expanded="false" aria-controls="collapseprofile">
+    Click to view more
+  	</a>
+  	</h4>
+  	<div class="row">
+  	<div class="collapse col-12" id="collapseprofile">
+  		<div class="card card-body">
+    		<ul class="list-group">
+  				<li class="list-group-item">
+  					<p>Email: {{profileData[1]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>First Name: {{profileData[2]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>Last Name: {{profileData[3]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>Address 1: {{profileData[4]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>Address 2: {{profileData[5]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>Zip code: {{profileData[6]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>City: {{profileData[7]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>State: {{profileData[8]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>Country: {{profileData[9]}} </p>
+  				</li>
+  				<li class="list-group-item">
+  					<p>Phone Number: {{profileData[10]}} </p>
+  				</li>
+			</ul>
+  		</div>
+	</div>
+	</div>
+	<div class="row">
+		<a class="btn btn-outline-primary col-5" href="/account/profile/edit">Edit Profile</a>
+		<div class="col-2"></div>
+		<a class="btn btn-outline-primary col-5" href="/account/profile/changePassword">Change password</a>
+	</div>
+</div>
+
+{% endblock %}
